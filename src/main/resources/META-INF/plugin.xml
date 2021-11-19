@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>com.codergeezer.redis-client</id>
+    <name>Plugin display name here</name>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="com.codergeezer.redisclient.logic.RedisWindowManager" id="Redis Client"
+                    secondary="false" anchor="right"/>
+        <fileEditorProvider implementation="com.codergeezer.redisclient.view.editor.KeyValueDisplayEditorProvider"/>
+        <projectService serviceImplementation="com.codergeezer.redisclient.view.editor.KeyValueDisplayFileSystem"/>
+
+        <fileEditorProvider implementation="com.codergeezer.redisclient.view.editor.ConsoleEditorProvider"/>
+        <projectService serviceImplementation="com.codergeezer.redisclient.view.editor.ConsoleFileSystem"/>
+        <projectService serviceImplementation="com.codergeezer.redisclient.logic.Notifier" id="Redis Client"/>
+        <notificationGroup id="Redis Notification Group" displayType="BALLOON" key="notification.group.redis"/>
+
+        <!--        <fileType name="Redis Cmd" extensions="rcmd"-->
+        <!--                  implementationClass="com.mzyupc.aredis.view.language.RedisCmdLanguageFileType" language="REDIS_CMD"/>-->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
